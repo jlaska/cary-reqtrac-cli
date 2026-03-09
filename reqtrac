@@ -1,0 +1,13 @@
+#!/bin/bash
+# Wrapper script for Cary ReqTrac CLI
+# This handles dependency management through uv
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+exec uv run \
+  --with click \
+  --with rich \
+  --with httpx \
+  --with beautifulsoup4 \
+  --with lxml \
+  "${SCRIPT_DIR}/reqtrac.py" "$@"
